@@ -33,30 +33,30 @@
       <ul class="navbar-nav mx-auto snip1135">
         <li class="nav-item"><a class="nav-link" href="home.php">Home</a></li>
         <li class="nav-item dropdown">
-          <!-- <a class="nav-link" href="idatasiswa.php"></a> -->
+          <!-- <a class="nav-link" href="idataeskul.php"></a> -->
           <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
             Input Data
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="idatasiswa.php">Data Siswa</a>
+            <a class="dropdown-item" href="idataeskul.php">Data Eskul</a>
             <a class="dropdown-item" href="idatanilai.php">Data Nilai</a>
             <a class="dropdown-item" href="idatabobot.php">Data Bobot</a>
           </div>
         </li>
         <li class="nav-item dropdown">
-          <!-- <a class="nav-link" href="idatasiswa.php"></a> -->
+          <!-- <a class="nav-link" href="idataeskul.php"></a> -->
           <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
             View Data
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="vdatasiswa.php">Data Siswa</a>
+            <a class="dropdown-item" href="vdataeskul.php">Data Eskul</a>
             <a class="dropdown-item" href="vdatanilai.php">Data Nilai</a>
             <a class="dropdown-item" href="vdatabobot.php">Data Bobot</a>
           </div>
         </li>
-        <li class="nav-item"><a class="nav-link" href="matrikskeputusan.php">Hitung SAW</a></li>
+        <li class="nav-item"><a class="nav-link" href="matrikskeputusan.php">Hitung ARAS</a></li>
     </div>
   </nav>
 
@@ -68,34 +68,34 @@
       <div class="card-body">
         <form name="frm" id="myForm" method="post" enctype="multipart/form-data">
           <div class="form-group has-feedback">
-            <label class="control-label col-sm-3" for="uas">Bobot UAS :</label>
+            <label class="control-label col-sm-3" for="event">Bobot Event :</label>
             <div class="col">
-              <input type="text" name="uas" class="form-control" required name="id" data-error="Isi kolom dengan benar">
+              <input type="text" name="event" class="form-control" required name="id" data-error="Isi kolom dengan benar">
               <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
               <div class="help-block with-errors" role="alert"></div>
             </div>
           </div>
           <div class="form-group has-feedback">
-            <label class="control-label col-sm-3" for="uts">Bobot UTS :</label>
+            <label class="control-label col-sm-3" for="kreatif">Bobot Kreatifitas :</label>
             <div class="col">
-              <input type="text" name="uts" class="form-control" required name="nama"
+              <input type="text" name="kreatif" class="form-control" required name="nama"
                 data-error="Isi kolom dengan benar">
               <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
               <div class="help-block with-errors" role="alert"></div>
             </div>
           </div>
           <div class="form-group has-feedback">
-            <label class="control-label col-sm-3" for="rapot">Bobot Nilai Rapot :</label>
+            <label class="control-label col-sm-3" for="bakat">Bobot Bakat :</label>
             <div class="col">
-              <input type="text" name="rapot" class="form-control" data-error="Isi kolom dengan benar">
+              <input type="text" name="bakat" class="form-control" data-error="Isi kolom dengan benar">
               <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
               <div class="help-block with-errors" role="alert"></div>
             </div>
           </div>
           <div class="form-group has-feedback">
-            <label class="control-label col-sm-3" for="tes">Bobot Tes Masuk :</label>
+            <label class="control-label col-sm-3" for="prestasi">Bobot Prestasi :</label>
             <div class="col">
-              <input type="text" name="tes" class="form-control" required data-error="Isi kolom dengan benar">
+              <input type="text" name="prestasi" class="form-control" required data-error="Isi kolom dengan benar">
               <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
               <div class="help-block with-errors" role="alert"></div>
             </div>
@@ -109,12 +109,12 @@
         <?php		
 
                 if(isset($_POST['submit'])){
-                    $uas            = $_POST['uas'];
-                    $uts            = $_POST['uts'];
-                    $rapot          = $_POST['rapot'];
-                    $tes            = $_POST['tes'];
+                    $event          = $_POST['event'];
+                    $kreatif        = $_POST['kreatif'];
+                    $bakat          = $_POST['bakat'];
+                    $prestasi       = $_POST['prestasi'];
                     
-                    $query="INSERT INTO tb_bobot SET B_UAS='$uas', B_UTS='$uts', B_nilairapot='$rapot', B_tesmasuk='$tes'";
+                    $query="INSERT INTO tb_bobot SET B_event='$event', B_kreatif='$kreatif', B_bakat='$bakat', B_prestasi='$prestasi'";
                     $result=mysqli_query($konek_db, $query);
                         if($result){
                             ?>

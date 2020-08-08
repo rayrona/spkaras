@@ -32,30 +32,30 @@
       <ul class="navbar-nav mx-auto snip1135">
         <li class="nav-item"><a class="nav-link" href="home.php">Home</a></li>
         <li class="nav-item dropdown">
-          <!-- <a class="nav-link" href="idatasiswa.php"></a> -->
+          <!-- <a class="nav-link" href="idataeskul.php"></a> -->
           <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
             Input Data
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="idatasiswa.php">Data Siswa</a>
+            <a class="dropdown-item" href="idataeskul.php">Data Eskul</a>
             <a class="dropdown-item" href="idatanilai.php">Data Nilai</a>
             <a class="dropdown-item" href="idatabobot.php">Data Bobot</a>
           </div>
         </li>
         <li class="nav-item dropdown">
-          <!-- <a class="nav-link" href="idatasiswa.php"></a> -->
+          <!-- <a class="nav-link" href="idataeskul.php"></a> -->
           <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
             View Data
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="vdatasiswa.php">Data Siswa</a>
+            <a class="dropdown-item" href="vdataeskul.php">Data Eskul</a>
             <a class="dropdown-item" href="vdatanilai.php">Data Nilai</a>
             <a class="dropdown-item" href="vdatabobot.php">Data Bobot</a>
           </div>
         </li>
-        <li class="nav-item"><a class="nav-link" href="matrikskeputusan.php">Hitung SAW</a></li>
+        <li class="nav-item"><a class="nav-link" href="matrikskeputusan.php">Hitung ARAS</a></li>
     </div>
   </nav>
 
@@ -70,11 +70,11 @@
             <thead>
               <tr>
                 <th>Nomor</th>
-                <th>NIS</th>
-                <th>UAS</th>
-                <th>UTS</th>
-                <th>Nilai Rapot</th>
-                <th>Niali Tes Masuk</th>
+                <th>Alternatif</th>
+                <th>Event</th>
+                <th>Kreatifitas</th>
+                <th>Penyaluran Bakat</th>
+                <th>Prestasi</th>
                 <th>Aksi</th>
               </tr>
             </thead>

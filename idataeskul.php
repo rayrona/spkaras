@@ -34,79 +34,75 @@
       <ul class="navbar-nav mx-auto snip1135">
         <li class="nav-item"><a class="nav-link" href="home.php">Home</a></li>
         <li class="nav-item dropdown">
-          <!-- <a class="nav-link" href="idatasiswa.php"></a> -->
+          <!-- <a class="nav-link" href="idataeskul.php"></a> -->
           <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
             Input Data
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="idatasiswa.php">Data Siswa</a>
+            <a class="dropdown-item" href="idataeskul.php">Data Eskul</a>
             <a class="dropdown-item" href="idatanilai.php">Data Nilai</a>
             <a class="dropdown-item" href="idatabobot.php">Data Bobot</a>
           </div>
         </li>
         <li class="nav-item dropdown">
-          <!-- <a class="nav-link" href="idatasiswa.php"></a> -->
+          <!-- <a class="nav-link" href="idataeskul.php"></a> -->
           <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
             View Data
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="vdatasiswa.php">Data Siswa</a>
+            <a class="dropdown-item" href="vdataeskul.php">Data Eskul</a>
             <a class="dropdown-item" href="vdatanilai.php">Data Nilai</a>
             <a class="dropdown-item" href="vdatabobot.php">Data Bobot</a>
           </div>
         </li>
-        <li class="nav-item"><a class="nav-link" href="matrikskeputusan.php">Hitung SAW</a></li>
+        <li class="nav-item"><a class="nav-link" href="matrikskeputusan.php">Hitung ARAS</a></li>
     </div>
   </nav>
   <div class="container">
     <div class="card shadow my-5">
       <div class="card-header text-center">
-        <h3>Input Data Siswa </h3>
+        <h3>Input Data Eskul </h3>
       </div>
       <div class="card-body">
         <?php 
-        $carikode = mysqli_query($konek_db, "select max(NIS) from tb_siswa");
+        $carikode = mysqli_query($konek_db, "select max(alternatif) from tb_eskul");
         $datakode = mysqli_fetch_array($carikode);
         if ($datakode) {
         $nilaikode = substr($datakode[0], 1);
         $kode = (int) $nilaikode;
         $kode = $kode + 1;
-        $hasilkode = "S".str_pad($kode, 3, "0", STR_PAD_LEFT);
+        $hasilkode = "A".str_pad($kode, 1, "0", STR_PAD_LEFT);
         } else {
-        $hasilkode = "S001";
+        $hasilkode = "A1";
         }
         ?>
         <form name="frm" id="myForm" method="post" enctype="multipart/form-data">
           <div class="form-group has-feedback">
-            <label for="nis">NIS :</label>
-            <input type="text" name="nis" class="form-control" required name="id" data-error="Isi kolom dengan benar"
+            <label for="alternatif">Nomor Eskul :</label>
+            <input type="text" name="alternatif" class="form-control" required name="id" data-error="Isi kolom dengan benar"
               value="<?php echo $hasilkode; ?>" readonly>
             <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
             <div class="help-block with-errors" role="alert"></div>
           </div>
           <div class="form-group has-feedback">
-            <label for="nama">Nama :</label>
+            <label for="nama">Nama Eskul :</label>
             <input type="text" name="nama" class="form-control" required name="nama"
               data-error="Isi kolom dengan benar">
             <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
             <div class="help-block with-errors" role="alert"></div>
           </div>
+
           <div class="form-group has-feedback">
-            <label for="tgllahir">Tanggal Lahir :</label>
-            <input type="text" id="coldate1" name="tgllahir" class="form-control IP_calendar" alt="date"
-              title="Y/m/d"><br>
-          </div>
-          <div class="form-group has-feedback">
-            <label for="asalsekolah">Asal Sekolah :</label>
-            <input type="text" name="asalsekolah" class="form-control" data-error="Isi kolom dengan benar">
+            <label for="pembimbing">Pembimbing :</label>
+            <input type="text" name="pembimbing" class="form-control" data-error="Isi kolom dengan benar">
             <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
             <div class="help-block with-errors" role="alert"></div>
           </div>
           <div class="form-group has-feedback">
-            <label for="notelp">No Telp :</label>
-            <input type="text" name="notelp" class="form-control" required data-error="Isi kolom dengan benar">
+            <label for="tempat">Tempat :</label>
+            <input type="text" name="tempat" class="form-control" required data-error="Isi kolom dengan benar">
             <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
             <div class="help-block with-errors" role="alert"></div>
           </div>
@@ -118,12 +114,11 @@
       <?php		
 
                     if(isset($_POST['submit'])){
-                    $nis                 = $_POST['nis'];
-                    $nama                = $_POST['nama'];
-                    $tgllahir            = $_POST['tgllahir'];
-                    $asalsekolah         = $_POST['asalsekolah'];
-                    $notelp              = $_POST['notelp'];
-                    $query="INSERT INTO tb_siswa SET NIS='$nis', nama='$nama', tgllahir='$tgllahir',asalsekolah='$asalsekolah', notelp='$notelp'";
+                    $alternatif         = $_POST['alternatif'];
+                    $nama               = $_POST['nama'];              
+                    $pembimbing         = $_POST['pembimbing'];
+                    $tempat             = $_POST['tempat'];
+                    $query="INSERT INTO tb_eskul SET alternatif='$alternatif', nama='$nama', pembimbing='$pembimbing', tempat='$tempat'";
                     $result=mysqli_query($konek_db, $query);
                         if($result){
                             ?>

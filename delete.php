@@ -1,6 +1,6 @@
 <?php
 include('koneksi.php');
-$query="DELETE from tb_siswa where NIS='".$_GET['id']."'";
+$query="DELETE from tb_eskul where alternatif='".$_GET['id']."'";
 mysqli_query($konek_db, $query);
-header("location:vdatasiswa.php");
-?>
+header("location:vdataeskul.php");
+?>   

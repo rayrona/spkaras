@@ -44,7 +44,7 @@
             Input Data
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="idatasiswa.php">Data Siswa</a>
+            <a class="dropdown-item" href="idatasiswa.php">Data Eskul</a>
             <a class="dropdown-item" href="idatanilai.php">Data Nilai</a>
             <a class="dropdown-item" href="idatabobot.php">Data Bobot</a>
           </div>
@@ -56,7 +56,7 @@
             View Data
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="vdatasiswa.php">Data Siswa</a>
+            <a class="dropdown-item" href="vdatasiswa.php">Data Eskul</a>
             <a class="dropdown-item" href="vdatanilai.php">Data Nilai</a>
             <a class="dropdown-item" href="vdatabobot.php">Data Bobot</a>
           </div>
@@ -242,7 +242,7 @@
               </thead>
               <?php
 
-                  $sql="SELECT B_UAS, B_UTS, B_nilairapot, B_tesmasuk FROM tb_bobot";
+                  $sql="SELECT B_event, B_kreatif, B_bakat, B_prestasi FROM tb_bobot";
                   $result=mysqli_query($konek_db,$sql); //row melihat dari sql
                   while($row=mysqli_fetch_array($result)){
                       $BobotUAS           = $row[0];

@@ -1,2 +1,2 @@
-# SPK-SAW
-Sistem pendukung keputusan dengan metode SAW
+# SPK-ARAS
+Sistem pendukung keputusan dengan metode ARAS

@@ -33,51 +33,51 @@
       <ul class="navbar-nav mx-auto snip1135">
         <li class="nav-item"><a class="nav-link" href="home.php">Home</a></li>
         <li class="nav-item dropdown">
-          <!-- <a class="nav-link" href="idatasiswa.php"></a> -->
+          <!-- <a class="nav-link" href="idataeskul.php"></a> -->
           <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
             Input Data
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="idatasiswa.php">Data Siswa</a>
+            <a class="dropdown-item" href="idataeskul.php">Data Eskul</a>
             <a class="dropdown-item" href="idatanilai.php">Data Nilai</a>
             <a class="dropdown-item" href="idatabobot.php">Data Bobot</a>
           </div>
         </li>
         <li class="nav-item dropdown">
-          <!-- <a class="nav-link" href="idatasiswa.php"></a> -->
+          <!-- <a class="nav-link" href="idataeskul.php"></a> -->
           <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
             View Data
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="vdatasiswa.php">Data Siswa</a>
+            <a class="dropdown-item" href="vdataeskul.php">Data Eskul</a>
             <a class="dropdown-item" href="vdatanilai.php">Data Nilai</a>
             <a class="dropdown-item" href="vdatabobot.php">Data Bobot</a>
           </div>
         </li>
-        <li class="nav-item"><a class="nav-link" href="matrikskeputusan.php">Hitung SAW</a></li>
+        <li class="nav-item"><a class="nav-link" href="matrikskeputusan.php">Hitung ARAS</a></li>
     </div>
   </nav>
 
   <div class="container">
     <div class="card shadow my-5">
       <div class="card-header text-center">
-        <h3>Input Data Siswa </h3>
+        <h3>Input Data Eskul </h3>
       </div>
       <div class="card-body">
         <form name="frm" id="myForm" method="post" enctype="multipart/form-data">
           <form id="form1" name="form1" method="post" action="idatanilai.php">
-            <label class="control-label col-sm-3" for="nama">NIS :</label>
+            <label class="control-label col-sm-3" for="nama">Nomor Eskul :</label>
             <div class="col">
-              <select class="form-control" name="nis" onChange='this.form.submit();'>
-                <option>Nomor Induk Siswa</option>
+              <select class="form-control" name="alternatif" onChange='this.form.submit();'>
+                <option>Nomor Eskul</option>
                 <?php 
- 				$query="select * from tb_siswa ORDER BY NIS ASC";
+ 				$query="select * from tb_eskul ORDER BY alternatif ASC";
                 $result=mysqli_query($konek_db, $query);
                     if(mysqli_num_rows($result) != 0){
                             while($data = mysqli_fetch_assoc($result)){
-                            echo '<option>'.$data['NIS'].'</option>';
+                            echo '<option>'.$data['alternatif'].'</option>';
         }
     }
 					?>
@@ -85,7 +85,7 @@
             </div>
 
             <div class="form-group has-feedback">
-              <label class="control-label col-sm-3" for="nama">Nama :</label>
+              <label class="control-label col-sm-3" for="nama">Nama Eskul :</label>
               <div class="col">
                 <input type="text" name="nama" class="form-control" data-error="Isi kolom dengan benar">
                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
@@ -93,33 +93,33 @@
               </div>
             </div>
             <div class="form-group has-feedback">
-              <label class="control-label col-sm-3" for="uas">Nilai UAS :</label>
+              <label class="control-label col-sm-3" for="event">Nilai Event :</label>
               <div class="col">
-                <input type="text" name="uas" class="form-control" data-error="Isi kolom dengan benar">
+                <input type="text" name="event" class="form-control" data-error="Isi kolom dengan benar">
                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                 <div class="help-block with-errors" role="alert"></div>
               </div>
             </div>
             <div class="form-group has-feedback">
-              <label class="control-label col-sm-3" for="uts">Nilai UTS :</label>
+              <label class="control-label col-sm-3" for="kreatif">Nilai Kreatifitas :</label>
               <div class="col">
-                <input type="text" name="uts" class="form-control" required data-error="Isi kolom dengan benar">
+                <input type="text" name="kreatif" class="form-control" required data-error="Isi kolom dengan benar">
                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                 <div class="help-block with-errors" role="alert"></div>
               </div>
             </div>
             <div class="form-group has-feedback">
-              <label class="control-label col-sm-3" for="rapot">Nilai Rapot :</label>
+              <label class="control-label col-sm-3" for="bakat">Nilai Penyaluran Bakat :</label>
               <div class="col">
-                <input type="text" name="rapot" class="form-control" required data-error="Isi kolom dengan benar">
+                <input type="text" name="bakat" class="form-control" required data-error="Isi kolom dengan benar">
                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                 <div class="help-block with-errors" role="alert"></div>
               </div>
             </div>
             <div class="form-group has-feedback">
-              <label class="control-label col-sm-3" for="tes">Nilai Tes Masuk :</label>
+              <label class="control-label col-sm-3" for="prestasi">Nilai Prestasi :</label>
               <div class="col">
-                <input type="text" name="tes" class="form-control" required data-error="Isi kolom dengan benar">
+                <input type="text" name="prestasi" class="form-control" required data-error="Isi kolom dengan benar">
                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                 <div class="help-block with-errors" role="alert"></div>
               </div>
@@ -132,14 +132,14 @@
         <?php		
 
                     if(isset($_POST['submit'])){
-                    $nis            = $_POST['nis'];
+                    $alternatif     = $_POST['alternatif'];
                     $nama           = $_POST['nama'];
-                    $uas            = $_POST['uas'];
-                    $uts            = $_POST['uts'];
-                    $rapot          = $_POST['rapot'];
-                    $tes            = $_POST['tes'];
+                    $event          = $_POST['event'];
+                    $kreatif        = $_POST['kreatif'];
+                    $bakat          = $_POST['bakat'];
+                    $prestasi       = $_POST['prestasi'];
                     
-                    $query="INSERT INTO tb_nilai SET NIS='$nis', nama='$nama', UAS='$uas',UTS='$uts', nilairapot='$rapot', nilaitesmasuk='$tes'";
+                    $query="INSERT INTO tb_nilai SET alternatif='$alternatif', nama='$nama', event='$event',kreatif='$kreatif', bakat='$bakat', prestasi='$prestasi'";
                     $result=mysqli_query($konek_db, $query);
                         if($result){
                             ?>

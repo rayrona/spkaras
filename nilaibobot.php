@@ -40,30 +40,30 @@
       <ul class="navbar-nav mx-auto snip1135">
         <li class="nav-item"><a class="nav-link" href="home.php">Home</a></li>
         <li class="nav-item dropdown">
-          <!-- <a class="nav-link" href="idatasiswa.php"></a> -->
+          <!-- <a class="nav-link" href="idataeskul.php"></a> -->
           <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
             Input Data
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="idatasiswa.php">Data Siswa</a>
+            <a class="dropdown-item" href="idataeskul.php">Data Eskul</a>
             <a class="dropdown-item" href="idatanilai.php">Data Nilai</a>
             <a class="dropdown-item" href="idatabobot.php">Data Bobot</a>
           </div>
         </li>
         <li class="nav-item dropdown">
-          <!-- <a class="nav-link" href="idatasiswa.php"></a> -->
+          <!-- <a class="nav-link" href="idataeskul.php"></a> -->
           <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
             View Data
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="vdatasiswa.php">Data Siswa</a>
+            <a class="dropdown-item" href="vdataeskul.php">Data Eskul</a>
             <a class="dropdown-item" href="vdatanilai.php">Data Nilai</a>
             <a class="dropdown-item" href="vdatabobot.php">Data Bobot</a>
           </div>
         </li>
-        <li class="nav-item"><a class="nav-link" href="perhitungan.php">Hitung ARAS</a></li>
+        <li class="nav-item"><a class="nav-link" href="matrikskeputusan.php">Hitung ARAS</a></li>
     </div>
   </nav>
 
@@ -71,9 +71,7 @@
     <div class="card m-5">
       <div class="card-body">
         <ul class="nav nav-tabs nav-justified">
-        <li class="nav-item">
-            <a class="nav-link" href="perhitungan.php">Perhitungan</a>
-          </li>
+        
           <li class="nav-item">
             <a class="nav-link" href="matrikskeputusan.php">Matriks Keputusan</a>
           </li>
@@ -93,23 +91,25 @@
             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
               <thead>
                 <tr>
-                  <th>UAS</th>
-                  <th>UTS</th>
-                  <th>Nilai Rapot</th>
-                  <th>Nilai Tes Masuk</th>
+                  <th>Kegiatan Event</th>
+                  <th>Kreatifitas</th>
+                  <th>Penyaluran Bakat</th>
+                  <th>Prestasi</th>
                 </tr>
               </thead>
+              <br>
+              <h4>Nilai Bobot</h4>
               <?php
                 $queri="Select * From tb_bobot";
                 $hasil=mysqli_query ($konek_db,$queri);   
                 while ($data = mysqli_fetch_array ($hasil)){  
                       echo "      
                               <tr>  
-                          <td>".$data[0]."</td>  
+                              <td>".$data[0]."</td>  
                               <td>".$data[1]."</td>
-                                    <td>".$data[2]."</td>
-                                    <td>".$data[3]."</td>
-                                    </tr>   
+                              <td>".$data[2]."</td>
+                              <td>".$data[3]."</td>
+                              </tr>   
                           ";      
                       }
                 ?>

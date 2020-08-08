@@ -4,7 +4,12 @@
 	<title>Form Login</title>
 	<style type="text/css">
 		body {
-			background-color: #7a58ff;
+			/* background-color: #7a58ff; */
+			-webkit-background-size: cover;
+			-moz-background-size: cover;
+			background-size: cover;
+			-o-background-size: cover;
+			background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('img/classroom.jpg');
 			font-family: "Segoe UI";
 		}
 		#wrapper {
@@ -34,6 +39,7 @@
 			text-align: center;
 			font-size: 40px;
 			color: #7a58ff;
+			
 		}
 		button {
 			border-radius: 2px;

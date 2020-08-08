@@ -19,6 +19,27 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
   </script>
+
+<style>
+.button {
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button1 {background-color: #4CAF50;} /* Green */
+.button2 {background-color: #008CBA;} /* Blue */
+</style>
+
+
+
 </head>
 
 <body>
@@ -32,37 +53,37 @@
       <ul class="navbar-nav mx-auto snip1135">
         <li class="nav-item"><a class="nav-link" href="home.php">Home</a></li>
         <li class="nav-item dropdown">
-          <!-- <a class="nav-link" href="idatasiswa.php"></a> -->
+          <!-- <a class="nav-link" href="idataeskul.php"></a> -->
           <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
             Input Data
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="idatasiswa.php">Data Siswa</a>
+            <a class="dropdown-item" href="idataeskul.php">Data Eskul</a>
             <a class="dropdown-item" href="idatanilai.php">Data Nilai</a>
             <a class="dropdown-item" href="idatabobot.php">Data Bobot</a>
           </div>
         </li>
         <li class="nav-item dropdown">
-          <!-- <a class="nav-link" href="idatasiswa.php"></a> -->
+          <!-- <a class="nav-link" href="idataeskul.php"></a> -->
           <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
             View Data
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="vdatasiswa.php">Data Siswa</a>
+            <a class="dropdown-item" href="vdataeskul.php">Data Eskul</a>
             <a class="dropdown-item" href="vdatanilai.php">Data Nilai</a>
             <a class="dropdown-item" href="vdatabobot.php">Data Bobot</a>
           </div>
         </li>
-        <li class="nav-item"><a class="nav-link" href="matrikskeputusan.php">Hitung SAW</a></li>
+        <li class="nav-item"><a class="nav-link" href="matrikskeputusan.php">Hitung ARAS</a></li>
     </div>
   </nav>
 
   <div class="container">
     <div class="card m-5">
       <div class="card-header text-center">
-        <h3>View Data Siswa </h3>
+        <h3>View Data Eskul </h3>
       </div>
       <div class="card-body">
         <div class="panel-body">
@@ -70,16 +91,16 @@
             <thead>
               <tr>
                 <th>Nomor</th>
-                <th>NIS</th>
-                <th>Nama</th>
-                <th>Tanggal Lahir</th>
-                <th>Asal Sekolah</th>
-                <th>No Telp</th>
+                <th>Alternatif</th>
+                <th>Nama Eskul</th>
+                <!-- <th>Tanggal Lahir</th> -->
+                <th>Pembimbing</th>
+                <th>Tempat</th>
                 <th>Aksi</th>
               </tr>
             </thead>
             <?php
-              $queri="Select * From tb_siswa";
+              $queri="Select * From tb_eskul";
               $hasil=mysqli_query ($konek_db,$queri);   
               $id = 0;
               while ($data = mysqli_fetch_array ($hasil)){  
@@ -87,13 +108,13 @@
                     echo "      
                             <tr>  
                             <td>".$id."</td>
-                        <td>".$data[0]."</td>  
-                            <td>".$data[1]."</td>
-                                  <td>".$data[2]."</td>
-                                  <td>".$data[3]."</td>
-                                  <td>".$data[4]."</td>
-                                  <td><a href=\"edatasiswa.php?id=".$data[0]."\">Edit Data</a> "." &nbsp; &nbsp;<a href=\"delete.php?id=".$data[0]."\" onclick='return checkDelete()'>Hapus Data</a> </td>
-                                  </tr>   
+                            <td>".$data[0]."</td>  
+                            <td>".$data[1]."</td>         
+                            <td>".$data[2]."</td>
+                            <td>".$data[3]."</td>
+                                  
+                            <td><a href=\"edataeskul.php?id=".$data[0]."\">Edit Data</a> "." | <a href=\"delete.php?id=".$data[0]."\" onclick='return checkDelete()'>Hapus Data</a> </td>
+                            </tr>   
                         ";      
                     }
               ?>

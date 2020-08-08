@@ -34,69 +34,69 @@
       <ul class="navbar-nav mx-auto snip1135">
         <li class="nav-item"><a class="nav-link" href="home.php">Home</a></li>
         <li class="nav-item dropdown">
-          <!-- <a class="nav-link" href="idatasiswa.php"></a> -->
+          <!-- <a class="nav-link" href="idataeskul.php"></a> -->
           <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
             Input Data
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="idatasiswa.php">Data Siswa</a>
+            <a class="dropdown-item" href="idataeskul.php">Data Eskul</a>
             <a class="dropdown-item" href="idatanilai.php">Data Nilai</a>
             <a class="dropdown-item" href="idatabobot.php">Data Bobot</a>
           </div>
         </li>
         <li class="nav-item dropdown">
-          <!-- <a class="nav-link" href="idatasiswa.php"></a> -->
+          <!-- <a class="nav-link" href="idataeskul.php"></a> -->
           <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
             View Data
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="vdatasiswa.php">Data Siswa</a>
+            <a class="dropdown-item" href="vdataeskul.php">Data Eskul</a>
             <a class="dropdown-item" href="vdatanilai.php">Data Nilai</a>
             <a class="dropdown-item" href="vdatabobot.php">Data Bobot</a>
           </div>
         </li>
-        <li class="nav-item"><a class="nav-link" href="matrikskeputusan.php">Hitung SAW</a></li>
+        <li class="nav-item"><a class="nav-link" href="matrikskeputusan.php">Hitung ARAS</a></li>
     </div>
   </nav>
   <div class="container">
     <div class="card shadow my-5">
       <div class="card-header text-center">
-        <h3>Edit Data Siswa </h3>
+        <h3>Edit Data Eskul </h3>
       </div>
       <div class="card-body">
         <?php 
-        $carikode = mysqli_query($konek_db, "select max(NIS) from tb_siswa");
+        $carikode = mysqli_query($konek_db, "select max(alternatif) from tb_eskul");
         $datakode = mysqli_fetch_array($carikode);
         if ($datakode) {
         $nilaikode = substr($datakode[0], 1);
         $kode = (int) $nilaikode;
         $kode = $kode + 1;
-        $hasilkode = "S".str_pad($kode, 3, "0", STR_PAD_LEFT);
+        $hasilkode = "A".str_pad($kode, 1, "0", STR_PAD_LEFT);
         } else {
-        $hasilkode = "S001";
+        $hasilkode = "A1";
         }
         ?>
         <form name="frm" id="myForm" method="post" enctype="multipart/form-data">
           <div class="form-group has-feedback">
-            <label class="control-label col-sm-3" for="nis">NIS :</label>
+            <label class="control-label col-sm-3" for="alternatif">alternatif :</label>
             <div class="col">
               <?php
-                       $tampil = "SELECT * FROM tb_siswa where NIS='".$_GET['id']."'";
+                       $tampil = "SELECT * FROM tb_eskul where alternatif='".$_GET['id']."'";
                        $sql = mysqli_query ($konek_db,$tampil);
                        while($data = mysqli_fetch_array ($sql))
                     {
-                        echo "<input type='text' name='nis' class='form-control' id='nis' readonly value='".$data[0]."'><br>";
+                        echo "<input type='text' name='alternatif' class='form-control' id='alternatif' readonly value='".$data[0]."'><br>";
                     }
                 ?>
             </div>
           </div>
           <div class="form-group has-feedback">
-            <label class="control-label col-sm-3" for="nama">Nama :</label>
+            <label class="control-label col-sm-3" for="nama">Nama Eskul :</label>
             <div class="col">
               <?php
-                       $tampil = "SELECT * FROM tb_siswa where NIS='".$_GET['id']."'";
+                       $tampil = "SELECT * FROM tb_eskul where alternatif='".$_GET['id']."'";
                        $sql = mysqli_query ($konek_db,$tampil);
                        while($data = mysqli_fetch_array ($sql))
                     {
@@ -105,41 +105,29 @@
                 ?>
             </div>
           </div>
+ 
           <div class="form-group has-feedback">
-            <label class="control-label col-sm-3" for="tgllahir">Tanggal Lahir :</label>
+            <label class="control-label col-sm-3" for="pembimbing">Pembimbing :</label>
             <div class="col">
               <?php
-                       $tampil = "SELECT * FROM tb_siswa where NIS='".$_GET['id']."'";
+                       $tampil = "SELECT * FROM tb_eskul where alternatif='".$_GET['id']."'";
                        $sql = mysqli_query ($konek_db,$tampil);
                        while($data = mysqli_fetch_array ($sql))
                     {
-                        echo "<input type='text' id='coldate1' name='tgllahir' class='form-control IP_calendar' alt='date' title='Y/m/d'  value='".$data[2]."'><br>";
+                        echo "<input type='text' name='pembimbing' class='form-control' id='pembimbing' value='".$data[2]."'><br>";
                     }
                 ?>
             </div>
           </div>
           <div class="form-group has-feedback">
-            <label class="control-label col-sm-3" for="asalsekolah">Asal Sekolah :</label>
+            <label class="control-label col-sm-3" for="tempat">Tempat :</label>
             <div class="col">
               <?php
-                       $tampil = "SELECT * FROM tb_siswa where NIS='".$_GET['id']."'";
+                       $tampil = "SELECT * FROM tb_eskul where alternatif='".$_GET['id']."' ";
                        $sql = mysqli_query ($konek_db,$tampil);
                        while($data = mysqli_fetch_array ($sql))
                     {
-                        echo "<input type='text' name='asalsekolah' class='form-control' id='asalsekolah' value='".$data[3]."'><br>";
-                    }
-                ?>
-            </div>
-          </div>
-          <div class="form-group has-feedback">
-            <label class="control-label col-sm-3" for="notelp">No Telp :</label>
-            <div class="col">
-              <?php
-                       $tampil = "SELECT * FROM tb_siswa where NIS='".$_GET['id']."' ";
-                       $sql = mysqli_query ($konek_db,$tampil);
-                       while($data = mysqli_fetch_array ($sql))
-                    {
-                        echo "<input type='text' name='notelp' class='form-control' id='notelp' value='".$data[4]."'><br>";
+                        echo "<input type='text' name='tempat' class='form-control' id='tempat' value='".$data[3]."'><br>";
                     }
                 ?>
             </div>
@@ -152,19 +140,18 @@
         <?php		
 
         if(isset($_POST['submit'])){
-        $nis                 = $_POST['nis'];
-        $nama                = $_POST['nama'];
-        $tgllahir            = $_POST['tgllahir'];
-        $asalsekolah         = $_POST['asalsekolah'];
-        $notelp              = $_POST['notelp'];
-        $query="UPDATE tb_siswa SET nama='$nama', tgllahir='$tgllahir',asalsekolah='$asalsekolah', notelp='$notelp' WHERE NIS='$nis'";
+        $alternatif         = $_POST['alternatif'];
+        $nama               = $_POST['nama'];
+        $pembimbing         = $_POST['pembimbing'];
+        $tempat             = $_POST['tempat'];
+        $query="UPDATE tb_eskul SET nama='$nama',pembimbing='$pembimbing', tempat='$tempat' WHERE alternatif='$alternatif'";
         $result=mysqli_query($konek_db, $query);
             if($result){
                 ?>
         <div class="alert alert-success fade in">
           <a href="vdatanilai.php" class="close" data-dismiss="alert" aria-label="close">×</a>
           <strong>Success!</strong> Data Berhasil Diinputkan.
-        </div>;
+        </div>
         <?php
                     }
 }

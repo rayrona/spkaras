@@ -38,30 +38,30 @@
       <ul class="navbar-nav mx-auto snip1135">
         <li class="nav-item"><a class="nav-link" href="home.php">Home</a></li>
         <li class="nav-item dropdown">
-          <!-- <a class="nav-link" href="idatasiswa.php"></a> -->
+          <!-- <a class="nav-link" href="idataeskul.php"></a> -->
           <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
             Input Data
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="idatasiswa.php">Data Siswa</a>
+            <a class="dropdown-item" href="idataeskul.php">Data Eskul</a>
             <a class="dropdown-item" href="idatanilai.php">Data Nilai</a>
             <a class="dropdown-item" href="idatabobot.php">Data Bobot</a>
           </div>
         </li>
         <li class="nav-item dropdown">
-          <!-- <a class="nav-link" href="idatasiswa.php"></a> -->
+          <!-- <a class="nav-link" href="idataeskul.php"></a> -->
           <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
             View Data
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="vdatasiswa.php">Data Siswa</a>
+            <a class="dropdown-item" href="vdataeskul.php">Data Eskul</a>
             <a class="dropdown-item" href="vdatanilai.php">Data Nilai</a>
             <a class="dropdown-item" href="vdatabobot.php">Data Bobot</a>
           </div>
         </li>
-        <li class="nav-item"><a class="nav-link" href="perhitungan.php">Hitung ARAS</a></li>
+        <li class="nav-item"><a class="nav-link" href="matrikskeputusan.php">Hitung ARAS</a></li>
     </div>
   </nav>
 
@@ -69,9 +69,7 @@
     <div class="card m-5">
       <div class="card-body">
         <ul class="nav nav-tabs nav-justified">
-        <li class="nav-item">
-            <a class="nav-link" href="perhitungan.php">Perhitungan</a>
-          </li>
+        
           <li class="nav-item">
             <a class="nav-link active" href="matrikskeputusan.php">Matriks Keputusan</a>
           </li>
@@ -92,38 +90,38 @@
               <thead>
                 <tr>
                   <th>Alternatif</th>
-                  <th>UAS</th>
-                  <th>UTS</th>
-                  <th>Nilai Rapot</th>
-                  <th>Nilai Tes Masuk</th>
+                  <th>Kegiatan Event</th>
+                  <th>Kreatifitas</th>
+                  <th>Penyaluran Bakat</th>
+                  <th>Prestasi</th>
                 </tr>
               </thead>
               <br>
               <h4>Matriks Keputusan</h4>
               <?php
 
-                      $sql="SELECT MAX(UAS), MAX(UTS), MAX(nilairapot), MAX(nilaitesmasuk) FROM tb_nilai";
+                      $sql="SELECT MAX(event), MAX(kreatif), MAX(bakat), MAX(prestasi) FROM tb_nilai";
                       $result=mysqli_query($konek_db,$sql); //row melihat dari sql
                       while($row=mysqli_fetch_array($result)){
-                          $MaxUAS           = $row[0];
-                          $MaxUTS           = $row[1];
-                          $Maxnilairapot    = $row[2];
-                          $Maxnilaitesmasuk = $row[3];
+                          $Maxevent    = $row[0];
+                          $Maxkreatif  = $row[1];
+                          $Maxbakat    = $row[2];
+                          $Maxprestasi = $row[3];
                           
                           
                       }
                       echo "
                           <tr>
                                 <td>Optimal</td>
-                                <td>".$MaxUAS."</td>
-                                <td>".$MaxUTS."</td>
-                                <td>".$Maxnilairapot."</td>
-                                <td>".$Maxnilaitesmasuk."</td>
+                                <td>".$Maxevent."</td>
+                                <td>".$Maxkreatif."</td>
+                                <td>".$Maxbakat."</td>
+                                <td>".$Maxprestasi."</td>
                                 
                                 </tr>
                       ";
 
-                        $sql="SELECT NIS,UAS,UTS,nilairapot,nilaitesmasuk FROM tb_nilai";
+                        $sql="SELECT alternatif,event,kreatif,bakat,prestasi FROM tb_nilai";
                         $result=mysqli_query($konek_db,$sql);
                             while($row=mysqli_fetch_array($result)){
                                     echo "      
@@ -140,27 +138,27 @@
                     }
 
 
-                       $sql="SELECT SUM(UAS), SUM(UTS), SUM(nilairapot), SUM(nilaitesmasuk) FROM tb_nilai";
+                       $sql="SELECT SUM(event), SUM(kreatif), SUM(bakat), SUM(prestasi) FROM tb_nilai";
                               $result=mysqli_query($konek_db,$sql); //row melihat dari sql
                               while($row=mysqli_fetch_array($result)){
-                                  $SumUAS            = $row[0];
-                                  $SumUTS            = $row[1];
-                                  $Sumnilairapot     = $row[2];
-                                  $Sumnilaitesmasuk  = $row[3];
+                                  $Sumevent     = $row[0];
+                                  $Sumkreatif   = $row[1];
+                                  $Sumbakat     = $row[2];
+                                  $Sumprestasi  = $row[3];
                                       
                               }
-                              $SumUASop           = $SumUAS+$MaxUAS;
-                              $SumUTSop           = $SumUTS+$MaxUTS;
-                              $Sumnilairapotop    = $Sumnilairapot+$Maxnilairapot;
-                              $Sumnilaitesmasukop = $Sumnilaitesmasuk+$Maxnilaitesmasuk;
+                              $Sumeventop    = $Sumevent+$Maxevent;
+                              $Sumkreatifop  = $Sumkreatif+$Maxkreatif;
+                              $Sumbakatop    = $Sumbakat+$Maxbakat;
+                              $Sumprestasiop = $Sumprestasi+$Maxprestasi;
                              
                                           echo "
                                         <tr>
                                               <td><b>Jumlah</b></td>
-                                              <td>".$SumUASop."</td>
-                                              <td>".$SumUTSop."</td>
-                                              <td>".$Sumnilairapotop."</td>
-                                              <td>".$Sumnilaitesmasukop."</td>                     
+                                              <td>".$Sumeventop."</td>
+                                              <td>".$Sumkreatifop."</td>
+                                              <td>".$Sumbakatop."</td>
+                                              <td>".$Sumprestasiop."</td>                     
                                               </tr>                                                   
                                     ";
                     ?>
